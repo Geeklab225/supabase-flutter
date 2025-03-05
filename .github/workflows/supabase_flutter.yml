@@ -66,6 +66,11 @@ jobs:
       - name: analyzer
         if: ${{ matrix.sdk == '3.x'}}
         run: flutter analyze --fatal-warnings --fatal-infos .
+      
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - run: supabase start
 
       - name: Run tests
         run: flutter test --concurrency=1
